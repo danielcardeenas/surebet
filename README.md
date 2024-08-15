@@ -12,8 +12,8 @@
 ## Map
 - [<code>Getting Started</code>](#-getting-started)
 - [<code>🔋 Features</code>](#️-features)
-- [<code>📦 Build</code>](#-build)
 - [<code>🖥️ Working example</code>](#️-working-example)
+- [<code>📦 Build</code>](#-build)
  
 ## ⚡ Getting Started
 ```ts
