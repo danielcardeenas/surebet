@@ -1,0 +1,17 @@
+node_modules
+dist
+session-*
+assets
+debug.log
+
+# exclude everything inside screenshots
+screenshots/*
+
+# exception to the rule
+!screenshots/.gitkeep
+
+# exclude everything inside sessions
+sessions/*
+
+# exception to the rule
+!sessions/.gitkeep
