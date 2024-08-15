@@ -67,11 +67,19 @@ For example:
 The following features are included in the project
 | Feature              | Status                                                                                     |
 | -------------------- |:---------------------------------------------------------------------------------------   |
-| Retriever agnostic   | Retrievers can be websockets, api calls, selenium, playwright, puppeteer, etc. Just implement common interface |
-| Fiat conversion      | See: https://github.com/danielcardeenas/surebet/tree/main/src/app/money for rates. (Right now hardcoded) |
+| Retriever agnostic    | Retrievers can be websockets, api calls, selenium, playwright, puppeteer, etc. Just implement common interface |
+| Multiple sources/bookies    | Arber can run multiple tough sources/bookies at the same time and place the bets accordingly |
+| Customizable arber    | Custom strategies supported. See [base arber](https://github.com/danielcardeenas/surebet/blob/main/src/app/arbers/base/arber.ts) to implement. <br> Examples for [h2h arber](https://github.com/danielcardeenas/surebet/blob/main/src/app/arbers/h2h/h2h-arber.ts) (tennis, mma) or [1x2 arber](https://github.com/danielcardeenas/surebet/blob/main/src/app/arbers/h2h/1x2.arber.ts) (soccer) markets |
+| Customizable genetic strategy | See available strategies: [genetics](https://github.com/danielcardeenas/surebet/tree/main/src/app/genetics) |
+| Fiat conversion       | See: [here](https://github.com/danielcardeenas/surebet/tree/main/src/app/money) for rates. (Right now hardcoded) |
+| Fuzzy string matching | Fuzzy string to match equal events between sources even when the names dont match exactly |
 
 ## 🖥️ Working example
-https://github.com/user-attachments/assets/0b1480a3-2b19-4539-9a38-f8b1ec3e10a2
+
+
+https://github.com/user-attachments/assets/9283abda-3a35-4de4-a237-0c877d20e8a6
+
+
 
 
 ## 📦 Build
