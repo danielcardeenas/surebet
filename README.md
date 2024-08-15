@@ -66,8 +66,9 @@ For example:
 ## 🔋 Features
 The following features are included in the project
 | Feature              | Status                                                                                     |
-| -------------------- |:---------------------------------------------------------------------------------------:   |
-| Fiat conversion      | uses cashify.js see: https://github.com/danielcardeenas/surebet/tree/main/src/app/money |
+| -------------------- |:---------------------------------------------------------------------------------------   |
+| Retriever agnostic   | Retrievers can be websockets, api calls, selenium, playwright, puppeteer, etc. Just implement common interface |
+| Fiat conversion      | See: https://github.com/danielcardeenas/surebet/tree/main/src/app/money for rates. (Right now hardcoded) |
 
 ## 🖥️ Working example
 https://github.com/user-attachments/assets/0b1480a3-2b19-4539-9a38-f8b1ec3e10a2
