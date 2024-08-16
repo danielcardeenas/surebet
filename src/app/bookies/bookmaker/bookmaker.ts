@@ -7,8 +7,6 @@ import { Credentials } from '../../models/types/credentials';
 import { Bookie } from '../bookie';
 import { Login } from './controllers';
 import { repo } from './repository';
-import * as puppeteer from 'puppeteer';
-import { pollUntil } from '@utils';
 
 const INITIAL_URL = 'https://be.bookmaker.eu/';
 
@@ -44,43 +42,12 @@ export class Bookmaker extends Bookie {
     config: { headless: boolean },
     currency: Currency = fiats.MXN,
   ) {
-    const port = 9222;
-    console.log(
-      `${BookieName.Bookmaker} is gonna connect to your current Chrome instance.`,
-    );
-    console.log(
-      `Make sure you have chrome running with param: \n\t--remote-debugging-port=${port}`,
-    );
-
-    const browserURL = `http://127.0.0.1:${port}`;
-    const browser = await puppeteer.connect({
-      browserURL,
-      defaultViewport: null,
-    });
-
-    console.log(
-      `${BookieName.Bookmaker} waiting/searching for bookmker.com page manually opened.`,
-    );
-    const page = await pollUntil(async () => {
-      const pages = await browser.pages();
-      const page = pages.find((page) => page.url().includes('bookmaker.eu'));
-      if (page) {
-        return page;
-      }
-
-      return null;
-    }, 1000);
-    
-    console.log(`${BookieName.Bookmaker} Connected to page (${page.url()}).`);
-    // await page.goto(`${browserURL}/json/version?sportsbook=${this.name}`);
+    const browser = await BrowserMaker.initBrowser(config.headless, this.name);
+    const pages = await browser.pages();
+    const newPage = async () => await browser.newPage();
+    const page = pages.length > 0 ? pages[0] : await newPage();
+    await page.goto(INITIAL_URL);
     return new Bookmaker({ browser, page }, currency);
-
-    // const browser = await BrowserMaker.initBrowser(config.headless, this.name);
-    // const pages = await browser.pages();
-    // const newPage = async () => await browser.newPage();
-    // const page = pages.length > 0 ? pages[0] : await newPage();
-    // await page.goto(INITIAL_URL);
-    // return new Bookmaker({ browser, page }, currency);
   }
 
   protected async _login(credentials: Credentials): Promise<boolean> {
