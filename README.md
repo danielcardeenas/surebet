@@ -33,7 +33,7 @@ await Promise.all([
 ]);
 
 // Set quantity to invest per opportunity
-const investment = { amount: 200, currency: fiats.USD };
+const investment = { amount: 200, currency: money.USD };
 
 // Create retrievers
 const retrievers = [
