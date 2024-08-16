@@ -3,7 +3,7 @@
   <img width="369" height="84" src="https://github.com/user-attachments/assets/a21cff5d-9433-4015-91a9-867642b2c89c">
 </p>
 
-# 💵 surebet 
+# surebet 💵
 [![GitHub license](https://img.shields.io/github/license/danielcardeenas/surebet)](https://github.com/danielcardeenas/surebet/blob/master/LICENSE)
 [![codebeat badge](https://codebeat.co/badges/7e510d47-8689-49da-abd8-a9a29d106a2b)](https://codebeat.co/projects/github-com-danielcardeenas-surebet-main)
 
