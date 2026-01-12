@@ -1,4 +1,4 @@
-import { PlaceResponse } from '@betcris/models';
+import { PlaceResponse } from '@bookmaker/models';
 import { BookieName } from '@models';
 import { genId, randomInt, screenshot, waitForResponse } from '@utils';
 import { GhostCursor } from 'ghost-cursor';

@@ -1,4 +1,3 @@
-import { WSBroker } from '@broker/broker';
 import { InstanceStatus } from '@broker/models';
 import { WSStore } from '@broker/store';
 import { BetEvent } from '@models';
@@ -33,7 +32,10 @@ export abstract class Bookie {
    * @param browser Browser instance
    * @param currency Base initial bookie currency
    */
-  constructor(public browser: Browser, public currency: Currency) {
+  constructor(
+    public browser: Browser,
+    public currency: Currency,
+  ) {
     // Assign unique id for this instance
     this.id = v4();
 
@@ -118,7 +120,7 @@ export abstract class Bookie {
    */
   public pause() {
     this.paused = true;
-    this.wsBroker.bookiePaused(this.id);
+    // this.wsBroker.bookiePaused(this.id);
   }
 
   /**
@@ -126,7 +128,7 @@ export abstract class Bookie {
    */
   public resume() {
     this.paused = false;
-    this.wsBroker.bookieResumed(this.id);
+    // this.wsBroker.bookieResumed(this.id);
   }
 
   /**
@@ -135,7 +137,7 @@ export abstract class Bookie {
    */
   public async close() {
     this.store.closeBookie(this.id);
-    this.wsBroker.bookieClosed(this.id);
+    // this.wsBroker.bookieClosed(this.id);
     await this.browser?.close();
   }
 
@@ -145,7 +147,7 @@ export abstract class Bookie {
    */
   public setMaximize(wants: boolean) {
     this.wantsToMaximize = wants;
-    this.wsBroker.bookieMaxing(this.id, this.wantsToMaximize);
+    // this.wsBroker.bookieMaxing(this.id, this.wantsToMaximize);
   }
 
   /**
@@ -153,7 +155,7 @@ export abstract class Bookie {
    * @param amount
    */
   public setBalance(amount: number) {
-    this.wsBroker.bookieBalanceUpdated(this.id, amount);
+    // this.wsBroker.bookieBalanceUpdated(this.id, amount);
     this._balance = amount;
   }
 
@@ -162,7 +164,7 @@ export abstract class Bookie {
    * @param amount
    */
   public setStatus(status: InstanceStatus) {
-    this.wsBroker.bookieStatusUpdated(this.id, status);
+    // this.wsBroker.bookieStatusUpdated(this.id, status);
     this._status = status;
   }
 
@@ -172,7 +174,7 @@ export abstract class Bookie {
    * This is optional
    */
   public postulating() {
-    this.wsBroker.bookieStatusUpdated(this.id, InstanceStatus.Postulating);
+    // this.wsBroker.bookieStatusUpdated(this.id, InstanceStatus.Postulating);
   }
 
   /**
@@ -181,7 +183,7 @@ export abstract class Bookie {
    * This is optional
    */
   public placing() {
-    this.wsBroker.bookieStatusUpdated(this.id, InstanceStatus.Placing);
+    // this.wsBroker.bookieStatusUpdated(this.id, InstanceStatus.Placing);
   }
 
   /**
@@ -190,7 +192,7 @@ export abstract class Bookie {
    * This is optional
    */
   public placed() {
-    this.wsBroker.bookieStatusUpdated(this.id, InstanceStatus.Placed);
+    // this.wsBroker.bookieStatusUpdated(this.id, InstanceStatus.Placed);
   }
 
   /**
@@ -199,7 +201,7 @@ export abstract class Bookie {
    * This is optional
    */
   public resetStatus() {
-    this.wsBroker.bookieStatusUpdated(this.id, InstanceStatus.Created);
+    // this.wsBroker.bookieStatusUpdated(this.id, InstanceStatus.Created);
   }
 
   /**

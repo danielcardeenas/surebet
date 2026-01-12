@@ -1,6 +1,4 @@
 import { Bookie } from '@bookies';
-import { WSBroker } from '@broker/broker';
-import { ArberStatus } from '@broker/models/arber-instance';
 import { WSStore } from '@broker/store';
 import { BookieName, BookieRetrieverTuple } from '@models';
 import { Money } from '@money/types';
@@ -85,7 +83,7 @@ export abstract class Arber {
   public pause() {
     console.log(`Pausing arber ${this.name}: ${this.id}`);
     this.blocked = true;
-    this.wsBroker.arberPaused(this.id);
+    // this.wsBroker.arberPaused(this.id);
   }
 
   /**
@@ -94,7 +92,7 @@ export abstract class Arber {
   public resume() {
     console.log(`Resuming arber ${this.name}: ${this.id}`);
     this.blocked = false;
-    this.wsBroker.arberResumed(this.id);
+    // this.wsBroker.arberResumed(this.id);
   }
 
   /**
@@ -103,7 +101,7 @@ export abstract class Arber {
    */
   public setInvestment(money: Money) {
     this.investment = money;
-    this.wsBroker.arberInvestmentUpdated(this.id, money);
+    // this.wsBroker.arberInvestmentUpdated(this.id, money);
   }
 
   /**
@@ -113,7 +111,7 @@ export abstract class Arber {
    */
   public notifyPostulating(bookies: Bookie[] = []) {
     bookies.forEach((b) => b.postulating());
-    this.wsBroker.arberStatusChanged(this.id, ArberStatus.Postulating);
+    // this.wsBroker.arberStatusChanged(this.id, ArberStatus.Postulating);
   }
 
   /**
@@ -123,7 +121,7 @@ export abstract class Arber {
    */
   public notifyPlacing(bookies: Bookie[] = []) {
     bookies.forEach((b) => b.placing());
-    this.wsBroker.arberStatusChanged(this.id, ArberStatus.Placing);
+    // this.wsBroker.arberStatusChanged(this.id, ArberStatus.Placing);
   }
 
   /**
@@ -133,7 +131,7 @@ export abstract class Arber {
    */
   public notifyPlaced(bookies: Bookie[] = []) {
     bookies.forEach((b) => b.placed());
-    this.wsBroker.arberStatusChanged(this.id, ArberStatus.Placed);
+    // this.wsBroker.arberStatusChanged(this.id, ArberStatus.Placed);
   }
 
   /**
@@ -143,7 +141,7 @@ export abstract class Arber {
    */
   public resetStatus(bookies: Bookie[] = []) {
     bookies.forEach((b) => b.resetStatus());
-    this.wsBroker.arberStatusChanged(this.id, ArberStatus.Created);
+    // this.wsBroker.arberStatusChanged(this.id, ArberStatus.Created);
   }
 
   /**
@@ -161,7 +159,7 @@ export abstract class Arber {
 
     // Close this instance
     this.store.closeArber(this.id);
-    this.wsBroker.arberClosed(this.id);
+    // this.wsBroker.arberClosed(this.id);
   }
 
   /**
